@@ -26,8 +26,10 @@ cavium_tim = {'Class': '08', 'Vendor': '177d', 'Device': 'a051',
               'SVendor': None, 'SDevice': None}
 avp_vnic = {'Class': '05', 'Vendor': '1af4', 'Device': '1110',
               'SVendor': None, 'SDevice': None}
+aws_fpga_sde = {'Class': '05', 'Vendor': '1d0f', 'Device': 'f002',
+              'SVendor': None, 'SDevice': None}
 
-network_devices = [network_class, cavium_pkx, avp_vnic]
+network_devices = [network_class, cavium_pkx, avp_vnic, aws_fpga_sde]
 crypto_devices = [encryption_class, intel_processor_class]
 eventdev_devices = [cavium_sso, cavium_tim]
 mempool_devices = [cavium_fpa]

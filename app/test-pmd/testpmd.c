@@ -333,7 +333,6 @@ lcoreid_t latencystats_lcore_id = -1;
  */
 struct rte_eth_rxmode rx_mode = {
 	.max_rx_pkt_len = ETHER_MAX_LEN, /**< Default maximum frame length. */
-	.offloads = DEV_RX_OFFLOAD_CRC_STRIP,
 	.ignore_offload_bitfield = 1,
 };
 

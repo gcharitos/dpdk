@@ -30,7 +30,12 @@
  * Default size of the mbuf data buffer to receive standard 1518-byte
  * Ethernet frames in a mono-segment memory buffer.
  */
+#if 0 /* AWS_TUNING */
 #define DEFAULT_MBUF_DATA_SIZE RTE_MBUF_DEFAULT_BUF_SIZE
+#else
+/* 9.5KB + headroom */
+#define DEFAULT_MBUF_DATA_SIZE (0x2600 + RTE_PKTMBUF_HEADROOM)
+#endif
 /**< Default size of mbuf data buffer. */
 
 /*

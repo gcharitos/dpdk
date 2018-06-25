@@ -35,6 +35,7 @@ SRCS-y += icmpecho.c
 SRCS-$(CONFIG_RTE_LIBRTE_IEEE1588) += ieee1588fwd.c
 SRCS-$(CONFIG_RTE_LIBRTE_BPF) += bpf_cmd.c
 SRCS-$(CONFIG_RTE_LIBRTE_SPP_PMD) += spp_loop_fwd.c
+SRCS-$(CONFIG_RTE_LIBRTE_SPP_PMD) += spp_eni_addr_swap.c
 
 ifeq ($(CONFIG_RTE_LIBRTE_PMD_SOFTNIC)$(CONFIG_RTE_LIBRTE_SCHED),yy)
 SRCS-y += tm.c

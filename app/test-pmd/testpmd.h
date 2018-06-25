@@ -281,6 +281,9 @@ extern struct fwd_engine ieee1588_fwd_engine;
 #ifdef RTE_LIBRTE_SPP_PMD
 extern struct fwd_engine spp_loop_fwd_engine;
 #endif
+#ifdef RTE_LIBRTE_SPP_PMD
+extern struct fwd_engine spp_eni_addr_swap_engine;
+#endif
 
 extern struct fwd_engine * fwd_engines[]; /**< NULL terminated array. */
 

@@ -165,6 +165,9 @@ struct fwd_engine * fwd_engines[] = {
 #ifdef RTE_LIBRTE_SPP_PMD
 	&spp_loop_fwd_engine,
 #endif
+#ifdef RTE_LIBRTE_SPP_PMD
+	&spp_eni_addr_swap_engine,
+#endif
 	NULL,
 };
 

@@ -1,13 +1,17 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # Copyright(c) 2010-2014 Intel Corporation
 
+export RTE_SDK=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk
+export RTE_TARGET=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk/x86_64-native-linuxapp-gcc
+export RTE_SDK_BIN=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk/x86_64-native-linuxapp-gcc
 include $(RTE_SDK)/mk/rte.vars.mk
 
 # library name
 LIB = librte_mbuf.a
 
 CFLAGS += -DALLOW_EXPERIMENTAL_API
-CFLAGS += $(WERROR_FLAGS) -I$(SRCDIR) -O3
+#CFLAGS += $(WERROR_FLAGS) -I$(SRCDIR) -O3
+CFLAGS += $(WERROR_FLAGS) -I$(SRCDIR) -O0 -g
 LDLIBS += -lrte_eal -lrte_mempool
 
 EXPORT_MAP := rte_mbuf_version.map

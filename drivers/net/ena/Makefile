@@ -31,13 +31,18 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+export RTE_SDK=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk
+export RTE_TARGET=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk/x86_64-native-linuxapp-gcc
+export RTE_SDK_BIN=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk/x86_64-native-linuxapp-gcc
 include $(RTE_SDK)/mk/rte.vars.mk
 
 #
 # library name
 #
 LIB = librte_pmd_ena.a
-CFLAGS += $(WERROR_FLAGS) -O2
+#CFLAGS += $(WERROR_FLAGS) -O2
+CFLAGS += $(WERROR_FLAGS) -O0
+CFLAGS += -g
 INCLUDES :=-I$(SRCDIR) -I$(SRCDIR)/base/ena_defs -I$(SRCDIR)/base
 
 EXPORT_MAP := rte_pmd_ena_version.map

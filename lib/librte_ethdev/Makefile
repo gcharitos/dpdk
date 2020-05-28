@@ -1,6 +1,9 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # Copyright(c) 2010-2017 Intel Corporation
 
+export RTE_SDK=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk
+export RTE_TARGET=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk/x86_64-native-linuxapp-gcc
+export RTE_SDK_BIN=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk/x86_64-native-linuxapp-gcc
 include $(RTE_SDK)/mk/rte.vars.mk
 
 #
@@ -9,7 +12,8 @@ include $(RTE_SDK)/mk/rte.vars.mk
 LIB = librte_ethdev.a
 
 CFLAGS += -DALLOW_EXPERIMENTAL_API
-CFLAGS += -O3
+#CFLAGS += -O3
+CFLAGS += -O0 -g
 CFLAGS += $(WERROR_FLAGS)
 LDLIBS += -lrte_net -lrte_eal -lrte_mempool -lrte_ring
 LDLIBS += -lrte_mbuf

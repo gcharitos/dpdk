@@ -13,13 +13,18 @@
 # permissions and limitations under the License.
 #
 
+export RTE_SDK=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk
+export RTE_TARGET=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk/x86_64-native-linuxapp-gcc
+export RTE_SDK_BIN=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk/x86_64-native-linuxapp-gcc
 include $(RTE_SDK)/mk/rte.vars.mk
 
 #
 # library name
 #
 LIB = librte_pmd_spp.a
-CFLAGS += $(WERROR_FLAGS) -O2
+#CFLAGS += $(WERROR_FLAGS) -O2
+CFLAGS += $(WERROR_FLAGS) -O0
+CFLAGS += -g
 INCLUDES :=-I$(SRCDIR)
 
 EXPORT_MAP := rte_pmd_spp_version.map

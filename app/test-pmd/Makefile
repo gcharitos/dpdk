@@ -1,7 +1,11 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # Copyright(c) 2010-2015 Intel Corporation
 
+export RTE_SDK=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk
+export RTE_TARGET=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk/x86_64-native-linuxapp-gcc
+export RTE_SDK_BIN=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk/x86_64-native-linuxapp-gcc
 include $(RTE_SDK)/mk/rte.vars.mk
+#include /home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk/mk/rte.vars.mk
 
 ifeq ($(CONFIG_RTE_TEST_PMD),y)
 
@@ -11,7 +15,8 @@ ifeq ($(CONFIG_RTE_TEST_PMD),y)
 APP = testpmd
 
 CFLAGS += -DALLOW_EXPERIMENTAL_API
-CFLAGS += -O3
+CFLAGS += -O0
+CFLAGS += -g
 CFLAGS += $(WERROR_FLAGS)
 
 #

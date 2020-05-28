@@ -27,6 +27,9 @@
 #include "spp.h"
 #include "spp_hal_private.h"
 
+#include "ena_ethdev.h"//GC
+#include "ena_com.h"//GC
+
 static inline uint16_t
 spp_tx_descs_to_clean(struct spp_tx_channel *tx_chan)
 {
@@ -561,6 +564,10 @@ out:
 static int
 spp_init_tx_channel(struct spp_tx_channel *tx_chan, unsigned int socket_id)
 {
+	struct rte_eth_dev *dev = &rte_eth_devices[0];
+	struct ena_ring *rx_ring = (struct ena_ring *) (dev->data->rx_queues[0]);
+        uint64_t phys_addr = rx_ring->ena_com_io_cq->cdesc_addr.phys_addr;//GC
+
 	int ret = 0;
 
 #if !defined(SPP_DBG_SW_LOOPBACK)
@@ -617,6 +624,11 @@ spp_init_tx_channel(struct spp_tx_channel *tx_chan, unsigned int socket_id)
 	spp_tx_chan_reg_write(tx_chan, SPP_REG_H2C_DM_BUF_PTR, 0);
 
 	spp_tx_chan_reg_write(tx_chan, SPP_REG_H2C_AXIS_PKT_CNT, 0);
+	
+	spp_tx_chan_reg_write(tx_chan, 0x4000, phys_addr & 0xffffffff);//cg
+	//spp_tx_chan_reg_write(tx_chan, 0x4000, ((phys_addr + 0x200 + 0x1c0) & 0xffffffff));//gc
+	spp_tx_chan_reg_write(tx_chan, 0x4004, phys_addr>>32);//gc
+	spp_tx_chan_reg_write(tx_chan, 0x4008, 0x00000001);//gc
 
 
 	/*

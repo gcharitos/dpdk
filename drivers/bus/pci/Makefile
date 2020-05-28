@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # Copyright(c) 2017 6WIND S.A.
-
+export RTE_SDK=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk
+export RTE_TARGET=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk/x86_64-native-linuxapp-gcc
+export RTE_SDK_BIN=/home/centos/src/project_data/aws-fpga/sdk/apps/virtual-ethernet/scripts/ve_inst/dpdk/x86_64-native-linuxapp-gcc
 include $(RTE_SDK)/mk/rte.vars.mk
 
 LIB = librte_bus_pci.a
@@ -8,7 +10,9 @@ LIBABIVER := 1
 EXPORT_MAP := rte_bus_pci_version.map
 
 CFLAGS := -I$(SRCDIR) $(CFLAGS)
-CFLAGS += -O3 $(WERROR_FLAGS)
+#CFLAGS += -O3 $(WERROR_FLAGS)
+CFLAGS += -O0 $(WERROR_FLAGS)
+CFLAGS += -g
 CFLAGS += -DALLOW_EXPERIMENTAL_API
 
 ifneq ($(CONFIG_RTE_EXEC_ENV_LINUXAPP),)
